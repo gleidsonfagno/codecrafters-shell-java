@@ -1,4 +1,4 @@
-[![progress-banner](https://backend.codecrafters.io/progress/shell/4bc93b41-9abf-4445-a191-5a6353ad8b22)](https://app.codecrafters.io/users/gleidsonfagno?r=2qF)
+ [![progress-banner](https://backend.codecrafters.io/progress/shell/4bc93b41-9abf-4445-a191-5a6353ad8b22)](https://app.codecrafters.io/users/gleidsonfagno?r=2qF)
 
 This is a starting point for Java solutions to the
 ["Build Your Own Shell" Challenge](https://app.codecrafters.io/courses/shell/overview).
