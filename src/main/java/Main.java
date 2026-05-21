@@ -12,9 +12,9 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine();
 
-            if (input.equals("exit")) {
+            if (input.equalsIgnoreCase("exit")) {
                 break;
-            } else if (input.equals("ls")) {
+            } else if (input.equalsIgnoreCase("ls")) {
                 // Implement ls command
             } else if (input.startsWith("cd ")) {
                 // Implement cd command
@@ -26,7 +26,7 @@ public class Main {
                 // Implement touch command
             } else if (input.startsWith("type ")) {
                 for (String command: commands) {
-                    if (input.substring(5).equals(command)) {
+                    if (input.substring(5).trim().equalsIgnoreCase(command)) {
                         System.out.println(command + " is a shell builtin");
                         break;
                     }
@@ -37,11 +37,11 @@ public class Main {
                 System.out.println(input.substring(5));
                 continue;
 
-            } else if (input.equals("pwd")) {
+            } else if (input.equalsIgnoreCase("pwd")) {
                 // Implement pwd command
-            } else if (input.equals("clear")) {
+            } else if (input.equalsIgnoreCase("clear")) {
                 // Implement clear command
-            } else if (input.equals("help")) {
+            } else if (input.equalsIgnoreCase("help")) {
                 System.out.println("Available commands: " + String.join(", ", commands));
             } else {
                System.out.println(input + ": command not found");
