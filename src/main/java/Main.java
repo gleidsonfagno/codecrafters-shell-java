@@ -14,13 +14,13 @@ public class Main {
             if (input.equals("exit")) {
                 break;
             }
-            System.out.println(input + ": command not found");
             for (String command : commands) {
                 if (input.startsWith(command)){
                     System.out.println(input.substring(5));
                 }
                 
             }
+            System.out.println(input + ": command not found");
         }
         while (true);
     }
