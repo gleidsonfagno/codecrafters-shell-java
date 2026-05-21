@@ -28,7 +28,8 @@ public class Main {
                 // Implement cat command
             } else if (input.startsWith("echo ")) {
                 // Implement echo command
-                 System.out.println(input.substring(5));
+                System.out.println(input.substring(5));
+                continue;
                 
             } else if (input.equals("pwd")) {
                 // Implement pwd command
@@ -37,10 +38,10 @@ public class Main {
             } else if (input.equals("help")) {
                 System.out.println("Available commands: " + String.join(", ", commands));
             } else {
-                System.out.println("Unknown command: " + input);
+               System.out.println(input + ": command not found");
             }
 
-            System.out.println(input + ": command not found");
+            // System.out.println(input + ": command not found");
         }
         while (true);
     }
