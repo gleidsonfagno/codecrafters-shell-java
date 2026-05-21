@@ -29,6 +29,8 @@ public class Main {
                     if (input.substring(5).trim().equalsIgnoreCase(command)) {
                         System.out.println(command + " is a shell builtin");
                         break;
+                    }else{
+                        System.out.println(input.substring(5).trim() + ": not found");
                     }
                 }
 
