@@ -19,10 +19,10 @@ public class Main {
                     if (input.startsWith(command)){
                         System.out.println(input.substring(5));
                     }
-                    
+                    break;
                 }
+                System.out.println(input + ": command not found");
             }
-            System.out.println(input + ": command not found");
         }
         while (true);
     }
