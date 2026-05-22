@@ -25,13 +25,18 @@ public class Main {
             } else if (input.startsWith("touch ")) {
                 // Implement touch command
             } else if (input.startsWith("type ")) {
+                String commandToCheck = input.substring(5).trim();
+                boolean found = false;
+                
                 for (String command: commands) {
-                    if (input.substring(5).trim().equalsIgnoreCase(command)) {
+                    if (commandToCheck.equalsIgnoreCase(command)) {
                         System.out.println(command + " is a shell builtin");
+                        found = true;
                         break;
-                    }else{
-                        System.out.println(input.substring(5).trim() + ": not found");
                     }
+                }
+                if (!found) {
+                    System.out.println(commandToCheck + ": not found");
                 }
 
             } else if (input.startsWith("echo ")) {
