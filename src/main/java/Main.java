@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        String[] commands = {"exit", "ls", "cd", "mkdir", "rm", "touch", "type", "echo", "pwd", "clear", "help"};
+        String[] commands = {"exit", "ls", "cd", "rm", "touch", "type", "echo", "pwd", "clear", "help"};
         String pathCommands = System.getenv("PATH");
         String[] pathDirs = pathCommands.split(File.pathSeparator);
 
