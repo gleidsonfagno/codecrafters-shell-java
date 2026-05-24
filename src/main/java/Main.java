@@ -1,11 +1,14 @@
 
+import java.io.File;
 import java.util.Scanner;
 
-
 public class Main {
+
     public static void main(String[] args) throws Exception {
 
         String[] commands = {"exit", "ls", "cd", "mkdir", "rm", "touch", "type", "echo", "pwd", "clear", "help"};
+        String pathCommands = System.getenv("PATH");
+        String[] pathDirs = pathCommands.split(File.pathSeparator);
 
         do {
             System.out.print("$ ");
@@ -14,23 +17,22 @@ public class Main {
 
             if (input.equalsIgnoreCase("exit")) {
                 break;
-            } else if (input.equalsIgnoreCase("ls")) {
-                // Implement ls command
-            } else if (input.startsWith("cd ")) {
-                // Implement cd command
-            } else if (input.startsWith("mkdir ")) {
-                // Implement mkdir command
-            } else if (input.startsWith("rm ")) {
-                // Implement rm command
-            } else if (input.startsWith("touch ")) {
-                // Implement touch command
             } else if (input.startsWith("type ")) {
+
                 String commandToCheck = input.substring(5).trim();
                 boolean found = false;
-                
-                for (String command: commands) {
+
+                for (String command : commands) {
                     if (commandToCheck.equalsIgnoreCase(command)) {
                         System.out.println(command + " is a shell builtin");
+                        found = true;
+                        break;
+                    }
+                }
+                for (String pathDir : pathDirs) {
+                    File file = new File(pathDir, commandToCheck);
+                    if (file.exists() && file.canExecute()) {
+                        System.out.println(commandToCheck + " is " + file.getAbsolutePath());
                         found = true;
                         break;
                     }
@@ -40,22 +42,16 @@ public class Main {
                 }
 
             } else if (input.startsWith("echo ")) {
-                // Implement echo command
-                System.out.println(input.substring(5));
-                continue;
-
-            } else if (input.equalsIgnoreCase("pwd")) {
-                // Implement pwd command
-            } else if (input.equalsIgnoreCase("clear")) {
-                // Implement clear command
+                commandEcho(input);
             } else if (input.equalsIgnoreCase("help")) {
                 System.out.println("Available commands: " + String.join(", ", commands));
             } else {
-               System.out.println(input + ": command not found");
+                System.out.println(input + ": command not found");
             }
+        } while (true);
+    }
 
-            // System.out.println(input + ": command not found");
-        }
-        while (true);
+    public static void commandEcho(String input) {
+        System.out.println(input.substring(5));
     }
 }
