@@ -22,6 +22,7 @@ public class Main {
                 String commandToCheck = input.substring(5).trim();
                 boolean found = false;
 
+                // Check if it's a shell builtin
                 for (String command : commands) {
                     if (commandToCheck.equalsIgnoreCase(command)) {
                         System.out.println(command + " is a shell builtin");
@@ -29,14 +30,18 @@ public class Main {
                         break;
                     }
                 }
-                for (String pathDir : pathDirs) {
-                    File file = new File(pathDir, commandToCheck);
-                    if (file.exists() && file.canExecute()) {
-                        System.out.println(commandToCheck + " is " + file.getAbsolutePath());
-                        found = true;
-                        break;
+                // If not a builtin, check if it's an executable in the PATH
+                if (!found) {
+                    for (String pathDir : pathDirs) {
+                        File file = new File(pathDir, commandToCheck);
+                        if (file.exists() && file.canExecute()) {
+                            System.out.println(commandToCheck + " is " + file.getAbsolutePath());
+                            found = true;
+                            break;
+                        }
                     }
                 }
+                // If still not found, print not found message
                 if (!found) {
                     System.out.println(commandToCheck + ": not found");
                 }
